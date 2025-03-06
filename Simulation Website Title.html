@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html>  <!--set up for HTML page-->
+<head>
+<title>Space Simulator Programming: Title</title>  <!--title and css page linked-->
+<link rel="stylesheet" href="Simulation Website SytleSheet.css">
+
+
+</head>
+<body>
+<h1>Physics Simulation Programming</h1>
+<a href = "Index.php">Login Page</a>
+<a href = "Simulation Website Tutorial.html">Tutorial page</a>
+<p>This is the a website that is designed to help people who want to learn about how to make a physics system for a game or 
+    other project. On this page you can see the physics system that you can create where all the objects and planets are 
+    interacting with each other to create a realistic system</p>
+<div id="simulation" class="simulation">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link type="text/css" href="https://www.glowscript.org/css/redmond/2.1/jquery-ui.custom.css" rel="stylesheet" />
+    <link type="text/css" href="https://www.glowscript.org/css/ide.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.glowscript.org/lib/jquery/2.1/jquery-ui.custom.min.js"></script>
+    <script type="text/javascript" src="https://www.glowscript.org/package/glow.3.2.min.js"></script>
+    <script type="text/javascript" src="https://www.glowscript.org/package/RSrun.3.2.min.js"></script>
+    <script type="text/javascript">
+    
+    // START JAVASCRIPT
+    ;(function() {;
+    var ρσ_modules = {};
+    var focus, timeConstant, pathLength, radScaling, astralBodies, trailScaling, objectLabels, G, changingObject, changingfObject;
+    ρσ_modules.pythonize = {};
+    
+    (function(){
+        function strings() {
+            var string_funcs, exclude, name;
+            string_funcs = set("capitalize strip lstrip rstrip islower isupper isspace lower upper swapcase center count endswith startswith find rfind index rindex format join ljust rjust partition rpartition replace split rsplit splitlines zfill".split(" "));
+            if (!arguments.length) {
+                exclude = (function(){
+                    var s = ρσ_set();
+                    s.jsset.add("split");
+                    s.jsset.add("replace");
+                    return s;
+                })();
+            } else if (arguments[0]) {
+                exclude = Array.prototype.slice.call(arguments);
+            } else {
+                exclude = null;
+            }
+            if (exclude) {
+                string_funcs = string_funcs.difference(set(exclude));
+            }
+            var ρσ_Iter0 = string_funcs;
+            ρσ_Iter0 = ((typeof ρσ_Iter0[Symbol.iterator] === "function") ? (ρσ_Iter0 instanceof Map ? ρσ_Iter0.keys() : ρσ_Iter0) : Object.keys(ρσ_Iter0));
+            for (var ρσ_Index0 of ρσ_Iter0) {
+                name = ρσ_Index0;
+                (ρσ_expr_temp = String.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name] = (ρσ_expr_temp = ρσ_str.prototype)[(typeof name === "number" && name < 0) ? ρσ_expr_temp.length + name : name];
+            }
+        };
+        if (!strings.__module__) Object.defineProperties(strings, {
+            __module__ : {value: "pythonize"}
+        });
+    
+        ρσ_modules.pythonize.strings = strings;
+    })();
+    async function __main__() {
+    "use strict";
+        var display = canvas;
+        var scene = canvas();
+    
+        function input(arg) {
+            arg = arg || {}
+            if (arg.prompt !== undefined && arg.prompt != '') return prompt(arg.prompt)
+            else if (typeof arg === 'string') return prompt(arg)
+            else return prompt()
+        }
+    
+        var version, print, arange, __name__, type, ρσ_ls, userzoom, userspin, userpan, radScaling, trailScaling, sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, moon, sunLabel, mercuryLabel, venusLabel, earthLabel, marsLabel, jupiterLabel, saturnLabel, uranusLabel, neptuneLabel, moonLabel, OrbitingObjects, astralBodies, objectLabels, astralBodiesString, G, focus, timeConstant, pathLength, changingObject, a, b;
+        version = ρσ_list_decorate([ "3.2", "simulation" ]);
+        Array.prototype['+'] = function(r) {return this.concat(r)}
+        Array.prototype['*'] = function(r) {return __array_times_number(this, r)}
+        window.__GSlang = "vpython";
+        print = GSprint;
+        arange = range;
+        __name__ = "__main__";
+        type = pytype;
+        var strings = ρσ_modules.pythonize.strings;
+    
+        strings();
+        "5";
+        userzoom = true;
+        "6";
+        userspin = true;
+        "7";
+        userpan = false;
+        (await sleep(.1));
+        "8";
+        scene.autoscale = true;
+        "9";
+        radScaling = 5["*"](Math.pow(10, 2));
+        "10";
+        trailScaling = .5;
+        "12";
+        sun = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({name: "Sun", pos: vector(0, 0, 0), color: vector(.91, .51, 0), radius: 69.634["*"](Math.pow(10, 8)), mass: 1.9885["*"](Math.pow(10, 30)), velocity: vector(0, 0, 0)})]);
+        "15";
+        mercury = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({name: "Mercury", pos: vector(0, 0, 0), color: vector(.9, .7, .2), radius: radScaling["*"](2.4397)["*"](Math.pow(10, 6)), mass: .3285["*"](Math.pow(10, 24)), velocity: vector(0, 0, 0), orbitIncline: 7.004["*"](pi)["/"](180), aphelion: 69.818["*"](Math.pow(10, 9)), perihelion: 46["*"](Math.pow(10, 9)), aphelionAngle: pi["*"](3)["/"](4), make_trail: false, trail_radius: radScaling["*"](trailScaling)["*"](2.4397)["*"](Math.pow(10, 6)), trailRad: radScaling["*"](trailScaling)["*"](2.4397)["*"](Math.pow(10, 6)), retain: Math.pow(10, 3), orbiting: sun})]);
+        "19";
+        venus = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({name: "Venus", pos: vector(0, 0, 0), color: vector(1, .8, .4), radius: radScaling["*"](6.0518)["*"](Math.pow(10, 6)), mass: 4.867["*"](Math.pow(10, 24)), velocity: vector(0, 0, 0), orbitIncline: 3.395["*"](pi)["/"](180), aphelion: 108.941["*"](Math.pow(10, 9)), perihelion: 107.48["*"](Math.pow(10, 9)), aphelionAngle: pi["/"](6), make_trail: false, trail_radius: radScaling["*"](trailScaling)["*"](6.0518)["*"](Math.pow(10, 6)), trailRad: radScaling["*"](trailScaling)["*"](6.0518)["*"](Math.pow(10, 6)), retain: Math.pow(10, 3), orbiting: sun})]);
+        "23";
+        earth = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({name: "Earth", pos: vector(0, 0, 0), color: vector(0, .8, .9), radius: radScaling["*"](6.371)["*"](Math.pow(10, 6)), mass: 5.972["*"](Math.pow(10, 24)), velocity: vector(0, 0, 0), orbitIncline: 0, aphelion: 152.1["*"](Math.pow(10, 9)), perihelion: 147.095["*"](Math.pow(10, 9)), aphelionAngle: 0, make_trail: false, trail_radius: radScaling["*"](trailScaling)["*"](6.371)["*"](Math.pow(10, 6)), trailRad: radScaling["*"](trailScaling)["*"](6.371)["*"](Math.pow(10, 6)), retain: Math.pow(10, 3), orbiting: sun})]);
+        "27";
+        mars = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({name: "Mars", pos: vector(0, 0, 0), color: vector(.8, .4, .2), radius: radScaling["*"](3.3895)["*"](Math.pow(10, 6)), mass: .639["*"](Math.pow(10, 24)), velocity: vector(0, 0, 0), orbitIncline: 1.85["*"](pi)["/"](180), aphelion: 249.261["*"](Math.pow(10, 9)), perihelion: 206.65["*"](Math.pow(10, 9)), aphelionAngle: pi["/"](3), make_trail: false, trail_radius: radScaling["*"](trailScaling)["*"](3.3895)["*"](Math.pow(10, 6)), trailRad: radScaling["*"](trailScaling)["*"](3.3895)["*"](Math.pow(10, 6)), retain: Math.pow(10, 3), orbiting: sun})]);
+        "31";
+        jupiter = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({name: "Jupiter", pos: vector(0, 0, 0), color: vector(.8, .4, .2), radius: radScaling["*"](69.911)["*"](Math.pow(10, 6)), mass: 1898.13["*"](Math.pow(10, 24)), velocity: vector(0, 0, 0), orbitIncline: 1.304["*"](pi)["/"](180), aphelion: 816.363["*"](Math.pow(10, 9)), perihelion: 740.595["*"](Math.pow(10, 9)), aphelionAngle: pi["*"](3)["/"](8), make_trail: false, trail_radius: radScaling["*"](trailScaling)["*"](69.911)["*"](Math.pow(10, 6)), trailRad: radScaling["*"](trailScaling)["*"](69.911)["*"](Math.pow(10, 6)), retain: Math.pow(10, 3), orbiting: sun})]);
+        "35";
+        saturn = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({name: "Saturn", pos: vector(0, 0, 0), color: vector(1, .8, .4), radius: radScaling["*"](58.232)["*"](Math.pow(10, 6)), mass: 568.32["*"](Math.pow(10, 24)), velocity: vector(0, 0, 0), orbitIncline: 2.486["*"](pi)["/"](180), aphelion: 1506.527["*"](Math.pow(10, 9)), perihelion: 1357.554["*"](Math.pow(10, 9)), aphelionAngle: pi["*"](5)["/"](4), make_trail: false, trail_radius: radScaling["*"](trailScaling)["*"](58.232)["*"](Math.pow(10, 6)), trailRad: radScaling["*"](trailScaling)["*"](58.232)["*"](Math.pow(10, 6)), retain: Math.pow(10, 3), orbiting: sun})]);
+        "39";
+        uranus = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({name: "Uranus", pos: vector(0, 0, 0), color: vector(.6, .8, .9), radius: radScaling["*"](25.362)["*"](Math.pow(10, 6)), mass: 86.81["*"](Math.pow(10, 24)), velocity: vector(0, 0, 0), orbitIncline: .77["*"](pi)["/"](180), aphelion: 3001.39["*"](Math.pow(10, 9)), perihelion: 2732.696["*"](Math.pow(10, 9)), aphelionAngle: pi["*"](5)["/"](4), make_trail: false, trail_radius: radScaling["*"](trailScaling)["*"](25.362)["*"](Math.pow(10, 6)), trailRad: radScaling["*"](trailScaling)["*"](25.362)["*"](Math.pow(10, 6)), retain: Math.pow(10, 3), orbiting: sun})]);
+        "43";
+        neptune = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({name: "Neptune", pos: vector(0, 0, 0), color: vector(0, .2, .8), radius: radScaling["*"](24.622)["*"](Math.pow(10, 6)), mass: 102.4["*"](Math.pow(10, 24)), velocity: vector(0, 0, 0), orbitIncline: 1.77["*"](pi)["/"](180), aphelion: 4558.857["*"](Math.pow(10, 9)), perihelion: 4471.05["*"](Math.pow(10, 9)), aphelionAngle: pi["/"](2), make_trail: false, trail_radius: radScaling["*"](trailScaling)["*"](24.622)["*"](Math.pow(10, 6)), trailRad: radScaling["*"](trailScaling)["*"](24.622)["*"](Math.pow(10, 6)), retain: Math.pow(10, 3), orbiting: sun})]);
+        "47";
+        moon = ρσ_interpolate_kwargs.call(this, sphere, [ρσ_desugar_kwargs({name: "Moon", pos: vector(0, 0, 0), color: vector(.8, .8, .8), radius: radScaling["*"](1.7374)["*"](Math.pow(10, 6)), mass: .0734767309["*"](Math.pow(10, 24)), velocity: vector(0, 0, 0), orbitIncline: 5.1["*"](pi)["/"](180), aphelion: 405.696["*"](Math.pow(10, 6)), perihelion: 363.3["*"](Math.pow(10, 6)), aphelionAngle: pi, make_trail: false, trail_radius: radScaling["*"](trailScaling)["*"](6.371)["*"](Math.pow(10, 6)), trailRad: radScaling["*"](trailScaling)["*"](6.371)["*"](Math.pow(10, 6)), retain: Math.pow(10, 3), orbiting: earth})]);
+        "69";
+        sunLabel = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: sun.pos, text: "Sun", xoffset: 20, yoffset: 20})]);
+        "70";
+        mercuryLabel = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: mercury.pos, text: "Mercury", xoffset: 20, yoffset: 20})]);
+        "71";
+        venusLabel = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: venus.pos, text: "Venus", xoffset: 20, yoffset: 20})]);
+        "72";
+        earthLabel = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: earth.pos, text: "Earth", xoffset: 20, yoffset: 20})]);
+        "73";
+        marsLabel = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: mars.pos, text: "Mars", xoffset: 20, yoffset: 20})]);
+        "74";
+        jupiterLabel = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: jupiter.pos, text: "Jupiter", xoffset: 20, yoffset: 20})]);
+        "75";
+        saturnLabel = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: saturn.pos, text: "Saturn", xoffset: 20, yoffset: 20})]);
+        "76";
+        uranusLabel = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: uranus.pos, text: "Uranus", xoffset: 20, yoffset: 20})]);
+        "77";
+        neptuneLabel = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: neptune.pos, text: "Neptune", xoffset: 20, yoffset: 20})]);
+        "78";
+        moonLabel = ρσ_interpolate_kwargs.call(this, label, [ρσ_desugar_kwargs({pos: moon.pos, text: "Moon", xoffset: 20, yoffset: 20})]);
+        "80";
+        OrbitingObjects = ρσ_list_decorate([ mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, moon ]);
+        "82";
+        astralBodies = ρσ_list_decorate([ sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, moon ]);
+        "83";
+        objectLabels = ρσ_list_decorate([ sunLabel, mercuryLabel, venusLabel, earthLabel, marsLabel, jupiterLabel, saturnLabel, uranusLabel, neptuneLabel, moonLabel ]);
+        "85";
+        astralBodiesString = ρσ_list_decorate([ "sun", "Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune", "Moon" ]);
+        "88";
+        G = 6.67["*"](Math.pow(10, 11["-u"]()));
+        "89";
+        focus = sun;
+        "90";
+        timeConstant = 100;
+        "91";
+        pathLength = 5["*"](Math.pow(10, 7));
+        "92";
+        changingObject = earth;
+        "95";
+        async function initialVelocity(G, OrbitingObject) {
+            var ρσ_ls, speed, direction, InitialVelocity;
+            "96";
+            if ((OrbitingObject.aphelion !== OrbitingObject.perihelion && (typeof OrbitingObject.aphelion !== "object" || ρσ_not_equals(OrbitingObject.aphelion, OrbitingObject.perihelion)))) {
+                "97";
+                speed = sqrt(G["*"](OrbitingObject.orbiting.mass)["*"](2["/"](mag(OrbitingObject.orbiting.pos["-"](1["*"](OrbitingObject.pos))))["-"](1["*"](1)["/"](OrbitingObject.aphelion["+"](OrbitingObject.perihelion)["/"](2)))));
+                "100";
+            } else {
+                "101";
+                speed = sqrt(G["*"](OrbitingObject.orbiting.mass)["/"](OrbitingObject.aphelion));
+            }
+            "102";
+            direction = norm(cross(OrbitingObject.pos["-"](1["*"](OrbitingObject.orbiting.pos)), vector(0, 0, 1)));
+            "103";
+            InitialVelocity = vector(cos(OrbitingObject.orbitIncline)["*"](speed)["*"](direction.x), cos(OrbitingObject.orbitIncline)["*"](speed)["*"](direction.y), sin(OrbitingObject.orbitIncline)["*"](speed))["+"](OrbitingObject.orbiting.velocity);
+            "107";
+            return InitialVelocity;
+        };
+        if (!initialVelocity.__argnames__) Object.defineProperties(initialVelocity, {
+            __argnames__ : {value: ["G", "OrbitingObject"]},
+            __module__ : {value: null}
+        });
+    
+        "109";
+        async function accelerating(G, time, ActingObject, MovingObject) {
+            var ρσ_ls, forceMag, direction;
+            "111";
+            forceMag = G["*"](ActingObject.mass)["*"](MovingObject.mass)["/"](Math.pow(mag(ActingObject.pos["-"](1["*"](MovingObject.pos))), 2));
+            "112";
+            direction = norm(ActingObject.pos["-"](1["*"](MovingObject.pos)));
+            "113";
+            MovingObject.velocity=MovingObject.velocity["+"](timeConstant["*"](forceMag)["/"](MovingObject.mass)["*"](direction));
+            "115";
+            return MovingObject.velocity;
+        };
+        if (!accelerating.__argnames__) Object.defineProperties(accelerating, {
+            __argnames__ : {value: ["G", "time", "ActingObject", "MovingObject"]},
+            __module__ : {value: null}
+        });
+    
+        "117";
+        async function dynamicPathLength(Object, pathLength) {
+            "118";
+            Object.retain = pathLength["/"](mag(Object.velocity));
+            "120";
+            return Object.retain;
+        };
+        if (!dynamicPathLength.__argnames__) Object.defineProperties(dynamicPathLength, {
+            __argnames__ : {value: ["Object", "pathLength"]},
+            __module__ : {value: null}
+        });
+    
+        "122";
+        async function startup(OrbitingObjects, G) {
+            var ρσ_ls, i;
+            "123";
+            var ρσ_Iter1 = range(len(OrbitingObjects));
+            ρσ_Iter1 = ((typeof ρσ_Iter1[Symbol.iterator] === "function") ? (ρσ_Iter1 instanceof Map ? ρσ_Iter1.keys() : ρσ_Iter1) : Object.keys(ρσ_Iter1));
+            for (var ρσ_Index1 of ρσ_Iter1) {
+                i = ρσ_Index1;
+                "124";
+                ρσ_getitem(OrbitingObjects, i).pos = vector(sin(ρσ_getitem(OrbitingObjects, i).aphelionAngle)["*"](ρσ_getitem(OrbitingObjects, i).aphelion), cos(ρσ_getitem(OrbitingObjects, i).aphelionAngle)["*"](ρσ_getitem(OrbitingObjects, i).aphelion), 0)["+"](ρσ_getitem(OrbitingObjects, i).orbiting.pos);
+                "128";
+                ρσ_getitem(OrbitingObjects, i).velocity = (await initialVelocity(G, ρσ_getitem(OrbitingObjects, i)));
+                "129";
+                ρσ_getitem(OrbitingObjects, i).make_trail = true;
+                "130";
+                ρσ_getitem(OrbitingObjects, i).clear_trail();
+            }
+        };
+        if (!startup.__argnames__) Object.defineProperties(startup, {
+            __argnames__ : {value: ["OrbitingObjects", "G"]},
+            __module__ : {value: null}
+        });
+    
+        "133";
+        async function focusChange(menu) {
+            "134";
+            "135";
+            focus = ρσ_getitem(astralBodies, menu.index);
+        };
+        if (!focusChange.__argnames__) Object.defineProperties(focusChange, {
+            __argnames__ : {value: ["menu"]},
+            __module__ : {value: null}
+        });
+    
+        "137";
+        async function timeChange(slider) {
+            "138";
+            "139";
+            timeConstant = slider.value;
+        };
+        if (!timeChange.__argnames__) Object.defineProperties(timeChange, {
+            __argnames__ : {value: ["slider"]},
+            __module__ : {value: null}
+        });
+    
+        "141";
+        async function pathLengthChange(slider) {
+            "142";
+            "143";
+            pathLength = slider.value["*"](Math.pow(10, 6));
+        };
+        if (!pathLengthChange.__argnames__) Object.defineProperties(pathLengthChange, {
+            __argnames__ : {value: ["slider"]},
+            __module__ : {value: null}
+        });
+    
+        "146";
+        async function radiusScalingChange(slider) {
+            var ρσ_ls, radScalingBefore, i;
+            "147";
+            "148";
+            radScalingBefore = radScaling;
+            "149";
+            radScaling = slider.value["*"](Math.pow(10, 1));
+            "150";
+            var ρσ_Iter2 = range(len(astralBodies));
+            ρσ_Iter2 = ((typeof ρσ_Iter2[Symbol.iterator] === "function") ? (ρσ_Iter2 instanceof Map ? ρσ_Iter2.keys() : ρσ_Iter2) : Object.keys(ρσ_Iter2));
+            for (var ρσ_Index2 of ρσ_Iter2) {
+                i = ρσ_Index2;
+                "151";
+                ρσ_getitem(astralBodies, i).radius = ρσ_getitem(astralBodies, i).radius["*"](radScaling)["/"](radScalingBefore);
+                "153";
+                ρσ_getitem(astralBodies, i).trail_radius = ρσ_getitem(astralBodies, i).trail_radius["*"](radScaling)["/"](radScalingBefore);
+            }
+        };
+        if (!radiusScalingChange.__argnames__) Object.defineProperties(radiusScalingChange, {
+            __argnames__ : {value: ["slider"]},
+            __module__ : {value: null}
+        });
+    
+        "156";
+        async function trailScalingChange(slider) {
+            var ρσ_ls, trailScalingBefore, i;
+            "157";
+            "158";
+            trailScalingBefore = trailScaling;
+            "159";
+            trailScaling = slider.value["*"](Math.pow(10, 2["-u"]()));
+            "160";
+            var ρσ_Iter3 = range(len(astralBodies));
+            ρσ_Iter3 = ((typeof ρσ_Iter3[Symbol.iterator] === "function") ? (ρσ_Iter3 instanceof Map ? ρσ_Iter3.keys() : ρσ_Iter3) : Object.keys(ρσ_Iter3));
+            for (var ρσ_Index3 of ρσ_Iter3) {
+                i = ρσ_Index3;
+                "161";
+                ρσ_getitem(astralBodies, i).trail_radius = ρσ_getitem(astralBodies, i).trail_radius["*"](trailScaling)["/"](trailScalingBefore);
+            }
+        };
+        if (!trailScalingChange.__argnames__) Object.defineProperties(trailScalingChange, {
+            __argnames__ : {value: ["slider"]},
+            __module__ : {value: null}
+        });
+    
+        "164";
+        async function labelToggle(checkbox) {
+            var ρσ_ls, i;
+            "165";
+            "166";
+            if ((checkbox.checked === true || typeof checkbox.checked === "object" && ρσ_equals(checkbox.checked, true))) {
+                "167";
+                var ρσ_Iter4 = range(len(objectLabels));
+                ρσ_Iter4 = ((typeof ρσ_Iter4[Symbol.iterator] === "function") ? (ρσ_Iter4 instanceof Map ? ρσ_Iter4.keys() : ρσ_Iter4) : Object.keys(ρσ_Iter4));
+                for (var ρσ_Index4 of ρσ_Iter4) {
+                    i = ρσ_Index4;
+                    "168";
+                    ρσ_getitem(objectLabels, i).visible = true;
+                    "169";
+                }
+            } else if ((checkbox.checked === false || typeof checkbox.checked === "object" && ρσ_equals(checkbox.checked, false))) {
+                "170";
+                var ρσ_Iter5 = range(len(objectLabels));
+                ρσ_Iter5 = ((typeof ρσ_Iter5[Symbol.iterator] === "function") ? (ρσ_Iter5 instanceof Map ? ρσ_Iter5.keys() : ρσ_Iter5) : Object.keys(ρσ_Iter5));
+                for (var ρσ_Index5 of ρσ_Iter5) {
+                    i = ρσ_Index5;
+                    "171";
+                    ρσ_getitem(objectLabels, i).visible = false;
+                }
+            }
+        };
+        if (!labelToggle.__argnames__) Object.defineProperties(labelToggle, {
+            __argnames__ : {value: ["checkbox"]},
+            __module__ : {value: null}
+        });
+    
+        "173";
+        async function Gchange(input) {
+            "174";
+            "175";
+            if ((ρσ_equals((await type(input.number)), float) || ρσ_equals((await type(input.number)), int)) && input.number["<="](100) && input.number[">="](.01)) {
+                "177";
+                G = input.number["*"](Math.pow(10, 11["-u"]()));
+            }
+        };
+        if (!Gchange.__argnames__) Object.defineProperties(Gchange, {
+            __argnames__ : {value: ["input"]},
+            __module__ : {value: null}
+        });
+    
+        "179";
+        async function massChange(slider) {
+            "180";
+            "181";
+            changingObject.mass = Math.pow(10, slider.value);
+        };
+        if (!massChange.__argnames__) Object.defineProperties(massChange, {
+            __argnames__ : {value: ["slider"]},
+            __module__ : {value: null}
+        });
+    
+        "183";
+        async function redcolorChange(slider) {
+            "184";
+            "185";
+            changingObject.color.x = slider.value;
+            "186";
+            changingObject.trail_color = changingObject.color;
+        };
+        if (!redcolorChange.__argnames__) Object.defineProperties(redcolorChange, {
+            __argnames__ : {value: ["slider"]},
+            __module__ : {value: null}
+        });
+    
+        "188";
+        async function greencolorChange(slider) {
+            "189";
+            "190";
+            changingObject.color.y = slider.value;
+            "191";
+            changingObject.trail_color = changingObject.color;
+        };
+        if (!greencolorChange.__argnames__) Object.defineProperties(greencolorChange, {
+            __argnames__ : {value: ["slider"]},
+            __module__ : {value: null}
+        });
+    
+        "193";
+        async function bluecolorChange(slider) {
+            "194";
+            "195";
+            changingObject.color.z = slider.value;
+            "196";
+            changingObject.trail_color = changingObject.color;
+        };
+        if (!bluecolorChange.__argnames__) Object.defineProperties(bluecolorChange, {
+            __argnames__ : {value: ["slider"]},
+            __module__ : {value: null}
+        });
+    
+        "198";
+        async function radiusChange(slider) {
+            "199";
+            "200";
+            changingObject.radius = slider.value["*"](radScaling)["*"](Math.pow(10, 6));
+            "202";
+            changingObject.trail_radius = slider.value["*"](radScaling)["*"](trailScaling)["*"](Math.pow(10, 6));
+        };
+        if (!radiusChange.__argnames__) Object.defineProperties(radiusChange, {
+            __argnames__ : {value: ["slider"]},
+            __module__ : {value: null}
+        });
+    
+        "205";
+        async function trailRadiusChange(slider) {
+            "206";
+            "207";
+            changingObject.trail_radius = slider.value["*"](radScaling)["*"](trailScaling)["*"](Math.pow(10, 6));
+            "208";
+            changingObject.trailRad = slider.value["*"](radScaling)["*"](trailScaling)["*"](Math.pow(10, 6));
+        };
+        if (!trailRadiusChange.__argnames__) Object.defineProperties(trailRadiusChange, {
+            __argnames__ : {value: ["slider"]},
+            __module__ : {value: null}
+        });
+    
+        "210";
+        async function changeOrbitalIncline(slider) {
+            "211";
+            "212";
+            changingObject.orbitIncline = slider.value;
+            "213";
+            (await startup(OrbitingObjects, G));
+        };
+        if (!changeOrbitalIncline.__argnames__) Object.defineProperties(changeOrbitalIncline, {
+            __argnames__ : {value: ["slider"]},
+            __module__ : {value: null}
+        });
+    
+        "216";
+        async function changeAphelionAngle(slider) {
+            "217";
+            "218";
+            changingObject.aphelionAngle = slider.value;
+            "219";
+            (await startup(OrbitingObjects, G));
+        };
+        if (!changeAphelionAngle.__argnames__) Object.defineProperties(changeAphelionAngle, {
+            __argnames__ : {value: ["slider"]},
+            __module__ : {value: null}
+        });
+    
+        "222";
+        async function changeAphelion(input) {
+            "223";
+            "224";
+            if ((ρσ_equals((await type(input.number)), float) || ρσ_equals((await type(input.number)), int)) && input.number["<="](14) && input.number[">="](log10(changingObject.orbiting.radius, 10))) {
+                "226";
+                changingObject.aphelion = Math.pow(10, input.number);
+                "227";
+                (await startup(OrbitingObjects, G));
+            }
+        };
+        if (!changeAphelion.__argnames__) Object.defineProperties(changeAphelion, {
+            __argnames__ : {value: ["input"]},
+            __module__ : {value: null}
+        });
+    
+        "229";
+        async function changePerihelion(input) {
+            "230";
+            "231";
+            if ((ρσ_equals((await type(input.number)), float) || ρσ_equals((await type(input.number)), int)) && input.number["<="](14) && input.number[">="](log10(changingObject.orbiting.radius, 10))) {
+                "233";
+                changingObject.Perihelion = Math.pow(10, input.number);
+                "234";
+                (await startup(OrbitingObjects, G));
+            }
+        };
+        if (!changePerihelion.__argnames__) Object.defineProperties(changePerihelion, {
+            __argnames__ : {value: ["input"]},
+            __module__ : {value: null}
+        });
+    
+        "237";
+        async function GeneralSettings(B) {
+            "238";
+            scene.caption = "General Settings: \n";
+            "239";
+            scene.append_to_caption("Camera Focus:\n");
+            "240";
+            ρσ_interpolate_kwargs.call(this, menu, [ρσ_desugar_kwargs({choices: astralBodiesString, bind: focusChange, selected: focus.name})]);
+            "241";
+            scene.append_to_caption("\n\nTime:");
+            "242";
+            ρσ_interpolate_kwargs.call(this, slider, [ρσ_desugar_kwargs({bind: timeChange, min: 0, max: 200, value: timeConstant})]);
+            "243";
+            scene.append_to_caption("\n\nRadius Scaling: ");
+            "244";
+            ρσ_interpolate_kwargs.call(this, slider, [ρσ_desugar_kwargs({bind: radiusScalingChange, min: 1, max: 100, value: radScaling["*"](Math.pow(10, 1["-u"]()))})]);
+            "245";
+            scene.append_to_caption("\n\nPath Length: ");
+            "246";
+            ρσ_interpolate_kwargs.call(this, slider, [ρσ_desugar_kwargs({bind: pathLengthChange, min: 0, max: 100, value: pathLength["*"](Math.pow(10, 6["-u"]()))})]);
+            "247";
+            scene.append_to_caption("\n\nTrail radius scaling: ");
+            "248";
+            ρσ_interpolate_kwargs.call(this, slider, [ρσ_desugar_kwargs({bind: trailScalingChange, min: 1, max: 100, value: trailScaling["*"](Math.pow(10, 2))})]);
+            "249";
+            scene.append_to_caption("\n\nLabels: ");
+            "250";
+            ρσ_interpolate_kwargs.call(this, checkbox, [ρσ_desugar_kwargs({bind: labelToggle, checked: true})]);
+            "251";
+            scene.append_to_caption("\n\nGravitational constant (x10^-11): ");
+            (await sleep(.1));
+            "252";
+            ρσ_interpolate_kwargs.call(this, winput, [ρσ_desugar_kwargs({bind: Gchange})]);
+        };
+        if (!GeneralSettings.__argnames__) Object.defineProperties(GeneralSettings, {
+            __argnames__ : {value: ["B"]},
+            __module__ : {value: null}
+        });
+    
+        "254";
+        async function planetSettings(changingObject) {
+            "255";
+            scene.caption = changingObject.name["+"](":\n\n");
+            "256";
+            scene.append_to_caption("Mass: ");
+            "257";
+            ρσ_interpolate_kwargs.call(this, slider, [ρσ_desugar_kwargs({bind: massChange, min: log10(changingObject.mass, 10)["-"](1["*"](1)), max: log10(changingObject.mass, 10)["+"](1), value: log10(changingObject.mass, 10)})]);
+            "260";
+            scene.append_to_caption("\n\nRed: ");
+            "261";
+            ρσ_interpolate_kwargs.call(this, slider, [ρσ_desugar_kwargs({bind: redcolorChange, min: 0, max: 1, value: changingObject.color.x})]);
+            "262";
+            scene.append_to_caption("\n\nGreen: ");
+            "263";
+            ρσ_interpolate_kwargs.call(this, slider, [ρσ_desugar_kwargs({bind: greencolorChange, min: 0, max: 1, value: changingObject.color.y})]);
+            "264";
+            scene.append_to_caption("\n\nBlue: ");
+            "265";
+            ρσ_interpolate_kwargs.call(this, slider, [ρσ_desugar_kwargs({bind: bluecolorChange, min: 0, max: 1, value: changingObject.color.z})]);
+            "266";
+            scene.append_to_caption("\n\nRadius: ");
+            "267";
+            ρσ_interpolate_kwargs.call(this, slider, [ρσ_desugar_kwargs({bind: radiusChange, min: 1, max: 100, value: changingObject.radius["/"](radScaling["*"](Math.pow(10, 6)))})]);
+            "269";
+            if (ρσ_in(changingObject, OrbitingObjects)) {
+                "270";
+                scene.append_to_caption("\n\nTrail Radius: ");
+                "271";
+                ρσ_interpolate_kwargs.call(this, slider, [ρσ_desugar_kwargs({bind: trailRadiusChange, min: 0, max: 100, value: changingObject.trailRad["/"](radScaling["*"](Math.pow(10, 6))["*"](trailScaling))})]);
+                "272";
+                scene.append_to_caption("\n\nAll of these settings require the program Sto restart itelf automatically:");
+                "274";
+                scene.append_to_caption("\nOrbital Incline: ");
+                "275";
+                ρσ_interpolate_kwargs.call(this, slider, [ρσ_desugar_kwargs({bind: changeOrbitalIncline, min: 0, max: 2["*"](pi), value: changingObject.orbitIncline})]);
+                "276";
+                scene.append_to_caption("\nPoint of Aphelion(angle from earth aphelion): ");
+                "277";
+                ρσ_interpolate_kwargs.call(this, slider, [ρσ_desugar_kwargs({bind: changeAphelionAngle, min: 0, max: 2["*"](pi), value: changingObject.aphelionAngle})]);
+                "278";
+                scene.append_to_caption("\nAphelion distance (10 to the power of, eg. 11 becomes 10^11. up to 14): ");
+                (await sleep(.1));
+                "279";
+                ρσ_interpolate_kwargs.call(this, winput, [ρσ_desugar_kwargs({bind: changeAphelion})]);
+                "280";
+                scene.append_to_caption("\nPerihelion distance (10 to the power of, eg. 11 becomes 10^11. up to 14): ");
+                (await sleep(.1));
+                "281";
+                ρσ_interpolate_kwargs.call(this, winput, [ρσ_desugar_kwargs({bind: changePerihelion})]);
+            }
+        };
+        if (!planetSettings.__argnames__) Object.defineProperties(planetSettings, {
+            __argnames__ : {value: ["changingObject"]},
+            __module__ : {value: null}
+        });
+    
+        "284";
+        async function sunSettings(B) {
+            "285";
+            "286";
+            changingObject = sun;
+            "287";
+            (await planetSettings(changingObject));
+        };
+        if (!sunSettings.__argnames__) Object.defineProperties(sunSettings, {
+            __argnames__ : {value: ["B"]},
+            __module__ : {value: null}
+        });
+    
+        "289";
+        async function mercurySettings(B) {
+            "290";
+            "291";
+            changingObject = mercury;
+            "292";
+            (await planetSettings(changingObject));
+        };
+        if (!mercurySettings.__argnames__) Object.defineProperties(mercurySettings, {
+            __argnames__ : {value: ["B"]},
+            __module__ : {value: null}
+        });
+    
+        "294";
+        async function venusSettings(B) {
+            "295";
+            "296";
+            changingObject = venus;
+            "297";
+            (await planetSettings(changingObject));
+        };
+        if (!venusSettings.__argnames__) Object.defineProperties(venusSettings, {
+            __argnames__ : {value: ["B"]},
+            __module__ : {value: null}
+        });
+    
+        "299";
+        async function earthSettings(B) {
+            "300";
+            "301";
+            changingObject = earth;
+            "302";
+            (await planetSettings(changingObject));
+        };
+        if (!earthSettings.__argnames__) Object.defineProperties(earthSettings, {
+            __argnames__ : {value: ["B"]},
+            __module__ : {value: null}
+        });
+    
+        "304";
+        async function earthSettings(B) {
+            "305";
+            "306";
+            changingObject = earth;
+            "307";
+            (await planetSettings(changingObject));
+        };
+        if (!earthSettings.__argnames__) Object.defineProperties(earthSettings, {
+            __argnames__ : {value: ["B"]},
+            __module__ : {value: null}
+        });
+    
+        "309";
+        async function marsSettings(B) {
+            "310";
+            "311";
+            changingObject = mars;
+            "312";
+            (await planetSettings(changingObject));
+        };
+        if (!marsSettings.__argnames__) Object.defineProperties(marsSettings, {
+            __argnames__ : {value: ["B"]},
+            __module__ : {value: null}
+        });
+    
+        "314";
+        async function jupiterSettings(B) {
+            "315";
+            "316";
+            changingObject = jupiter;
+            "317";
+            (await planetSettings(changingObject));
+        };
+        if (!jupiterSettings.__argnames__) Object.defineProperties(jupiterSettings, {
+            __argnames__ : {value: ["B"]},
+            __module__ : {value: null}
+        });
+    
+        "319";
+        async function saturnSettings(B) {
+            "320";
+            "321";
+            changingObject = saturn;
+            "322";
+            (await planetSettings(changingObject));
+        };
+        if (!saturnSettings.__argnames__) Object.defineProperties(saturnSettings, {
+            __argnames__ : {value: ["B"]},
+            __module__ : {value: null}
+        });
+    
+        "324";
+        async function uranusSettings(B) {
+            "325";
+            "326";
+            changingObject = uranus;
+            "327";
+            (await planetSettings(changingObject));
+        };
+        if (!uranusSettings.__argnames__) Object.defineProperties(uranusSettings, {
+            __argnames__ : {value: ["B"]},
+            __module__ : {value: null}
+        });
+    
+        "329";
+        async function neptuneSettings(B) {
+            "330";
+            "331";
+            changingObject = neptune;
+            "332";
+            (await planetSettings(changingObject));
+        };
+        if (!neptuneSettings.__argnames__) Object.defineProperties(neptuneSettings, {
+            __argnames__ : {value: ["B"]},
+            __module__ : {value: null}
+        });
+    
+        "334";
+        async function moonSettings(B) {
+            "335";
+            "336";
+            changingObject = moon;
+            "337";
+            (await planetSettings(changingObject));
+        };
+        if (!moonSettings.__argnames__) Object.defineProperties(moonSettings, {
+            __argnames__ : {value: ["B"]},
+            __module__ : {value: null}
+        });
+    
+        "339";
+        ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({pos: scene.title_anchor, text: "General", bind: GeneralSettings})]);
+        "340";
+        ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({pos: scene.title_anchor, text: "Sun", bind: sunSettings})]);
+        "341";
+        ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({pos: scene.title_anchor, text: "Mercury", bind: mercurySettings})]);
+        "342";
+        ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({pos: scene.title_anchor, text: "Venus", bind: venusSettings})]);
+        "343";
+        ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({pos: scene.title_anchor, text: "Earth", bind: earthSettings})]);
+        "344";
+        ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({pos: scene.title_anchor, text: "Mars", bind: marsSettings})]);
+        "345";
+        ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({pos: scene.title_anchor, text: "Jupiter", bind: jupiterSettings})]);
+        "346";
+        ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({pos: scene.title_anchor, text: "Saturn", bind: saturnSettings})]);
+        "347";
+        ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({pos: scene.title_anchor, text: "Uranus", bind: uranusSettings})]);
+        "348";
+        ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({pos: scene.title_anchor, text: "Neptune", bind: neptuneSettings})]);
+        "349";
+        ρσ_interpolate_kwargs.call(this, button, [ρσ_desugar_kwargs({pos: scene.title_anchor, text: "Moon", bind: moonSettings})]);
+        "352";
+        (await startup(OrbitingObjects, G));
+        "354";
+        while (true) {
+            "355";
+            scene.center = focus.pos;
+            "356";
+            a = 0;
+            "357";
+            b = 0;
+            "358";
+            (await rate(1e3));
+            "360";
+            var ρσ_Iter6 = range(len(astralBodies));
+            ρσ_Iter6 = ((typeof ρσ_Iter6[Symbol.iterator] === "function") ? (ρσ_Iter6 instanceof Map ? ρσ_Iter6.keys() : ρσ_Iter6) : Object.keys(ρσ_Iter6));
+            for (var ρσ_Index6 of ρσ_Iter6) {
+                a = ρσ_Index6;
+                "361";
+                var ρσ_Iter7 = range(len(astralBodies));
+                ρσ_Iter7 = ((typeof ρσ_Iter7[Symbol.iterator] === "function") ? (ρσ_Iter7 instanceof Map ? ρσ_Iter7.keys() : ρσ_Iter7) : Object.keys(ρσ_Iter7));
+                for (var ρσ_Index7 of ρσ_Iter7) {
+                    b = ρσ_Index7;
+                    "362";
+                    if ((ρσ_getitem(astralBodies, a) !== ρσ_getitem(astralBodies, b) && (typeof ρσ_getitem(astralBodies, a) !== "object" || ρσ_not_equals(ρσ_getitem(astralBodies, a), ρσ_getitem(astralBodies, b))))) {
+                        "363";
+                        ρσ_getitem(astralBodies, a).velocity = (await accelerating(G, timeConstant, ρσ_getitem(astralBodies, b), ρσ_getitem(astralBodies, a)));
+                    }
+                }
+                "365";
+                ρσ_getitem(astralBodies, a).pos=ρσ_getitem(astralBodies, a).pos["+"](timeConstant["*"](ρσ_getitem(astralBodies, a).velocity));
+                "366";
+                ρσ_getitem(objectLabels, a).pos = ρσ_getitem(astralBodies, a).pos;
+                "367";
+                ρσ_getitem(astralBodies, a).retain = (await dynamicPathLength(ρσ_getitem(astralBodies, a), pathLength));
+            }
+        }
+    };
+    if (!__main__.__module__) Object.defineProperties(__main__, {
+        __module__ : {value: null}
+    });
+    
+    ;$(function(){ window.__context = { glowscript_container: $("#simulation").removeAttr("id") }; __main__() })})()
+    // END JAVASCRIPT
+    
+    //--><!]]></script>
+</div>
+</body>
+</html>

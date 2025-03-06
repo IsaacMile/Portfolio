@@ -1,0 +1,36 @@
+.simulation {
+    font-family: Arial, Helvetica, sans-serif; 
+    margin: 0.5%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    text-align: center;
+  }
+
+ p {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0.5%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: rgb(16, 18, 90);  
+}
+
+  h1 {
+    background-position: 20px 2px;
+    background-size: 120px 120px;
+    background-repeat: no-repeat;
+    list-style-type: none;
+    margin: 1%;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(66, 66, 66);
+    display: block;
+    color: #FFcc66;
+    font: sans-serif;
+    text-align: center;
+    padding: 14px 16px;
+    font-size: 60px;
+    margin-bottom: 20px;
+    border-width: 5px;
+    border-color: #FFcc66;
+    border-style: inset;
+  }  
