@@ -1,4 +1,4 @@
-# Portfolio
+# Portfolio - NOT FINISHED
 A small showcase of some of the works I've done 
 
 Recommended works to view:
