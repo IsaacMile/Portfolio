@@ -3,7 +3,7 @@ A small showcase of some of the works I've done
 
 Recommended works to view:
   example of java code (May 2025) - soft2
-  example of python code (January 2025) - soft1
+  example of python code (January 2025) - soft1, maybe
   Gravity simulator (June 2024) - good view of a large project, example of database handling with php and mySQL:
     1. full website viewable through "Simulation Website Title.HTML"
        login system will not work on non local device however php code is viewable 
