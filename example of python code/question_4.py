@@ -1,6 +1,6 @@
 class ColourPuzzle:
     def __init__(self, puzzle):
-        '''initialised a colour puzzle using board puzzle
+        '''initialised a colour puzzle on the board passed in by puzzle
 
         Args:
             self (ColourPuzzle): colour puzzle being created
@@ -42,8 +42,7 @@ class ColourPuzzle:
         self._board = puzzle.copy()
 
     def matchPattern(self, pattern):
-        '''tests in the centre 2x2 matches the pattern given, pattern is not
-           tested. returns true if matching, false if not
+        '''tests if the centre 2x2 matches the pattern given
 
         Args:
             self (ColourPuzzle): the puzzle to be tested
@@ -63,8 +62,7 @@ class ColourPuzzle:
             return False
 
     def moveLowerTile(self):
-        '''moves the tile below the empty tile up by 1 if possible,
-           returns true if move was made
+        '''moves the tile below the empty tile up by 1 if possible
 
         Args:
             self (ColourPuzzle): puzzle to be moved
@@ -88,8 +86,7 @@ class ColourPuzzle:
         return True
 
     def moveUpperTile(self):
-        '''moves the tile above the empty tile down by 1 if possible,
-           returns true if move was made
+        '''moves the tile above the empty tile down by 1 if possible
 
         Args:
             self (ColourPuzzle): puzzle to be moved
@@ -113,8 +110,7 @@ class ColourPuzzle:
         return True
 
     def moveLeftTile(self):
-        '''moves the tile left of the empty tile right by 1 if possible,
-           returns true if move was made
+        '''moves the tile left of the empty tile right by 1 if possible
 
         Args:
             self (ColourPuzzle): puzzle to be moved
@@ -138,8 +134,7 @@ class ColourPuzzle:
         return True
 
     def moveRightTile(self):
-        '''moves the tile right of the empty tile left by 1 if possible,
-           returns true if move was made
+        '''moves the tile right of the empty tile left by 1 if possible
 
         Args:
             self (ColourPuzzle): puzzle to be moved
@@ -164,13 +159,13 @@ class ColourPuzzle:
 
     def solvable(self, pattern, n):
         '''takes in a pattern and number of moves required to find the pattern
-           the function will then call itself with every possible move,
-           n number of times until a correct solution is found or n reaches 0
+           the function will then call itself with every possible move n 
+           number of times until a correct solution is found or n reaches 0
 
         Args:
             self (ColourPuzzle): the puzzle to be solved
             pattern (2x2 list of int): pattern being searched for in centre
-            n (int): number of moves remaining to solve puzzle
+                n (int): number of moves remaining to solve puzzle
 
         Returns:
             pattern_possible (bool): True if the puzzle is solvable,
