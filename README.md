@@ -15,7 +15,7 @@ Recommended works to view:
        CSS sheet also avalible through "Simulation StyleSheet.CSS" however not main focus 
     2. python code viewable through "Gravity simulation.py", very heavy commenting and alot of repeated concepts
        updated reacently to make it more readable but look at Dec 25 example for more recent python code
-    3. PHP code avalible to view through different pages
+    3. PHP code avalible to view through different pages, not very advanced due to project requirements 
   One Small Step (March 2023) - example of code produced under a time limit in an unfamiliar enviroment
     1. look at home
   
