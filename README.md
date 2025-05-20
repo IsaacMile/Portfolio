@@ -1,7 +1,7 @@
 # Portfolio - NOT FINISHED
 A small showcase of some of the works I've done 
 
-##Recommended works to view:
+## Recommended works to view:
 ###  example of java code (May 2025) - soft2
 ###  example of python code (December 2024) - an example of various different problems coded in python
     1. small example of string manipulation 
