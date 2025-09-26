@@ -15,5 +15,3 @@ A small showcase of some of the works I've done
        updated reacently to make it more readable but look at Dec 25 example for more recent python code
     3. PHP code avalible to view through different pages, not very advanced due to project requirements 
 
-test
-  
